@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$tea_green_map: (
+    0:#def2c8,
+    1:#c5dac1,
+    2:#bcd0c7,
+    3:#a9b2ac,
+    4:#898980
+);
+
+@function tea_green($clr: 1, $invert: 0) {
+    @return map.get($tea_green_map, $clr);
+}

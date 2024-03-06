@@ -1,0 +1,9 @@
+{
+  "author": "ChrisOfNormandy",
+  "description": "A collection of styles to make routine designs simpler.",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "confetti",
+  "type": "module",
+  "version": "1.0.0"
+}

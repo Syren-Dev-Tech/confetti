@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$pink_map: (
+    0:#ef798a,
+    1:#f7a9a8,
+    2:#613f75,
+    3:#e5c3d1,
+    4:#988b8e
+);
+
+@function pink($clr: 1, $invert: 0) {
+    @return map.get($pink_map, $clr);
+}

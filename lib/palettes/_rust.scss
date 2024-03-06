@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$rust_map: (
+    0:#af3800,
+    1:#fe621d,
+    2:#fd5200,
+    3:#00cfc1,
+    4:#00ffe7
+);
+
+@function rust($clr: 1, $invert: 0) {
+    @return map.get($rust_map, $clr);
+}

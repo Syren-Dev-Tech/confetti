@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$tomato_map: (
+    0:#fe4a49,
+    1:#2ab7ca,
+    2:#fed766,
+    3:#e6e6ea,
+    4:#f4f4f8
+);
+
+@function tomato($clr: 1, $invert: 0) {
+    @return map.get($tomato_map, $clr);
+}

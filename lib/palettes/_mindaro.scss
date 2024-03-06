@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$mindaro_map: (
+    0:#edf67d,
+    1:#f896d8,
+    2:#ca7df9,
+    3:#724cf9,
+    4:#564592
+);
+
+@function mindaro($clr: 1, $invert: 0) {
+    @return map.get($mindaro_map, $clr);
+}

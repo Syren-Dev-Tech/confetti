@@ -1,0 +1,51 @@
+@mixin flex($center: 0, $column: 0, $reverse: 0) {
+    display: flex;
+
+    @if $center !=0 {
+        align-items: center;
+    }
+
+    @if $column !=0 {
+        @if $reverse !=0 {
+            flex-direction: column-reverse;
+        }
+
+        @else {
+            flex-direction: column;
+        }
+    }
+
+    @if $reverse !=0 {
+        flex-direction: row-reverse;
+    }
+}
+
+@mixin flex-between($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: space-between;
+}
+
+@mixin flex-even($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: space-evenly;
+}
+
+@mixin flex-start($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: flex-start;
+}
+
+@mixin flex-end($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: flex-end;
+}
+
+@mixin flex-center($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: center;
+}

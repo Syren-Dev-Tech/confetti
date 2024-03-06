@@ -1,0 +1,72 @@
+@use 'sass:map';
+
+@mixin border($style: 'MISSING', $side: '') {
+    @if $side =='' {
+        @if $style ==none {
+            border: none;
+        }
+
+        @else {
+            border: map.get($borders, $style);
+        }
+    }
+
+    @else if $style ==none {
+        border-#{$side}: none;
+    }
+
+    @else {
+        border-#{$side}: map.get($borders, $style);
+    }
+}
+
+//
+
+@mixin shadow($style: 'MISSING', $type: 'box') {
+    @if $style ==none {
+        #{$type}-shadow: none;
+    }
+
+    @else {
+        #{$type}-shadow: map.get($shadows, $style);
+    }
+}
+
+//
+
+@mixin rounded($radius: 10px, $corner: '') {
+    @if $corner =='' {
+        border-radius: $radius;
+        
+    }
+
+    @else {
+        border-#{$corner}-radius: $radius;
+    }
+}
+
+@mixin rounded-side($radius: 10px, $side: 'top') {
+    @if $corner =='top' {
+        border-top-right-radius: $radius;
+        border-top-left-radius: $radius;
+    }
+
+    @else if $corner =='right' {
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
+    }
+
+    @else if $corner =='bottom' {
+        border-bottom-left-radius: $radius;
+        border-bottom-right-radius: $radius;
+    }
+
+    @else if $corner == 'left' {
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
+    }
+}
+
+@mixin circular() {
+    @include rounded(50%);
+}

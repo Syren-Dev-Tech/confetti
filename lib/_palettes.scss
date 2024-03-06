@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'sass:color';
+
+@import 'palettes/indian_red';
+@import 'palettes/mindaro';
+@import 'palettes/navy';
+@import 'palettes/pink';
+@import 'palettes/rust';
+@import 'palettes/syracuse';
+@import 'palettes/tea_green';
+@import 'palettes/tomato';
+
+$palettes: (
+    'indian_red': $indian_red_map,
+    'mindaro':$mindaro_map,
+    'navy':$navy_map,
+    'pink':$pink_map,
+    'rust':$rust_map,
+    'syracuse':$syracuse_map,
+    'tea_green':$tea_green_map,
+    'tomato':$tomato_map
+);
+
+@function palette($palette, $n) {
+    @return map.get(map.get($palettes, $palette), $n);
+}
+
+@function palette-inverse($palette, $n) {
+    $clr: palette($palette, $n);
+
+    @return color.invert($clr);
+}
+
+@function palette-compliment($palette, $n) {
+    @return compliment(palette($palette, $n));
+}
+
+@mixin append-palette($name, $color) {
+    
+}
+
+@mixin new-palette($name, $colors...) {
+
+}

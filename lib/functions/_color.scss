@@ -1,0 +1,58 @@
+@use 'sass:math';
+
+@function compliment($hexColor) {
+    $a: red($hexColor);
+    $b: green($hexColor);
+    $c: blue($hexColor);
+
+    $max: math.max($a, $b, $c);
+    $min: math.min($a, $b, $c);
+    $sum: $max + $min;
+
+    $r: $sum - $a;
+    $g: $sum - $b;
+    $b: $sum - $c;
+
+    @return rgb($r, $g, $b);
+}
+
+$red_threshold: 0.299;
+$green_threshold: 0.587;
+$blue_threshold: 0.114;
+$font_threshold: 186;
+
+@function useBlackFont($color) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    @return ($r*$red_threshold + $g*$green_threshold + $b*$blue_threshold)>$font_threshold;
+}
+
+@function color-for-background($color) {
+    @if useBlackFont($color) {
+        @return #000;
+    }
+
+    @return #fff;
+}
+
+@function monochrome($color, $amount) {
+    @if $amount == 0 {
+        @return $color;
+    }
+
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    @if $amount > 0 {
+        $x: 255 - $r;
+        $y: 255 - $g;
+        $z: 255 - $b;
+
+        @return rgb($r + $x * $amount, $g + $y * $amount, $b + $z * $amount);
+    }
+
+    @return rgb($r + $r * $amount, $g + $g * $amount, $b + $b * $amount);
+}

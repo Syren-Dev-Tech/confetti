@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$syracuse_map: (
+    0:#e53d00,
+    1:#ffe900,
+    2:#fcfff7,
+    3:#21a0a0,
+    4:#046865
+);
+
+@function syracuse($clr: 1, $invert: 0) {
+    @return map.get($syracuse_map, $clr);
+}

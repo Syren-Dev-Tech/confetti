@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+$indian_red_map: (
+    0:#f2545b,
+    1:#a93f55,
+    2:#19323c,
+    3:#f3f7f0,
+    4:#8c5e58
+);
+
+@function indian_red($clr: 1) {
+    @return map.get($indian_red_map, $clr);
+}
+
+// 54f2eb
+// 3fa993
+// 3c2319
+// f4f0f7
+// 58868c
