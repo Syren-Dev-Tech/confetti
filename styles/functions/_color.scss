@@ -1,5 +1,16 @@
 @use 'sass:math';
 
+$red_threshold: 0.299;
+$green_threshold: 0.587;
+$blue_threshold: 0.114;
+$font_threshold: 186;
+
+//
+
+/**
+ * hexColor : Some hex color like #ff0000, which gets converted to rgb
+ *          : and complimented to rgb(0, 255, 255).
+ */
 @function compliment($hexColor) {
     $a: red($hexColor);
     $b: green($hexColor);
@@ -16,11 +27,9 @@
     @return rgb($r, $g, $b);
 }
 
-$red_threshold: 0.299;
-$green_threshold: 0.587;
-$blue_threshold: 0.114;
-$font_threshold: 186;
-
+/**
+ * color : Any color like #ff0000 or rgb(255, 0, 0).
+ */
 @function useBlackFont($color) {
     $r: red($color);
     $g: green($color);
@@ -29,6 +38,9 @@ $font_threshold: 186;
     @return ($r*$red_threshold + $g*$green_threshold + $b*$blue_threshold)>$font_threshold;
 }
 
+/**
+ * color : Any color like #ff0000 or rgb(255, 0, 0).
+ */
 @function color-for-background($color) {
     @if useBlackFont($color) {
         @return #000;
@@ -37,6 +49,13 @@ $font_threshold: 186;
     @return #fff;
 }
 
+/**
+ * color  : Any color like #ff0000 or rgb(255, 0, 0).
+ * amount : The amount of monochrome shift in a positive or negative direction.
+ *        : A positive value between >0 and 1 shifts toward `white`.
+ *        : A negative value between <0 and -1 shifts toward `black`.
+ *        : A value of 0 returns the color provided.
+ */
 @function monochrome($color, $amount) {
     @if $amount == 0 {
         @return $color;

@@ -8,6 +8,9 @@ $rust_map: (
     4:#00ffe7
 );
 
-@function rust($clr: 1, $invert: 0) {
+/**
+ * clr : The key of the color from 0 to 4.
+ */
+@function rust($clr: 0) {
     @return map.get($rust_map, $clr);
 }

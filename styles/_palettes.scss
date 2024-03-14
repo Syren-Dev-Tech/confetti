@@ -21,24 +21,61 @@ $palettes: (
     'tomato':$tomato_map
 );
 
+/**
+ * palette :
+ * n       :
+ */
 @function palette($palette, $n) {
     @return map.get(map.get($palettes, $palette), $n);
 }
 
+/**
+ * palette :
+ * n       :
+ */
 @function palette-inverse($palette, $n) {
     $clr: palette($palette, $n);
 
     @return color.invert($clr);
 }
 
+/**
+ * palette :
+ * n       :
+ */
 @function palette-compliment($palette, $n) {
     @return compliment(palette($palette, $n));
 }
 
-@mixin append-palette($name, $color) {
-    
+//
+
+/**
+ * palette :
+ * name    :
+ * color   :
+ */
+@function append-palette($palette, $name, $color) {
+    @debug 'Add #{$name}:#{$color} to palette #{$palette}.';
+
+    $palettes: map.merge(map.get($palettes, $palette), ($name, $color)) !global;
+
+    @return $palettes;
 }
 
-@mixin new-palette($name, $colors...) {
+/**
+ * name   :
+ * colors :
+ */
+@mixin def-palette($name, $colors...) {
+    $i: 0;
 
+    $new_palette: ();
+
+    @each $color in $colors {
+        $new_palette: map.merge($new_palette, ($i: $color));
+
+        $i: $i + 1;
+    }
+
+    $palettes: map.merge($palettes, ($name: $new_palette)) !global;
 }

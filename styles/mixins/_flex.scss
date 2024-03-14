@@ -1,0 +1,91 @@
+/**
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex($center: 0, $column: 0, $reverse: 0) {
+    display: flex;
+
+    @if $center !=0 {
+        align-items: center;
+    }
+
+    @if $column !=0 {
+        @if $reverse !=0 {
+            flex-direction: column-reverse;
+        }
+
+        @else {
+            flex-direction: column;
+        }
+    }
+
+    @if $reverse !=0 {
+        flex-direction: row-reverse;
+    }
+}
+
+/**
+ * Applies `flex` rules and justifies content to `space-between`.
+ *
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex-between($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: space-between;
+}
+
+/**
+ * Applies `flex` rules and justifies content to `space-evenly`.
+ *
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex-even($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: space-evenly;
+}
+
+/**
+ * Applies `flex` rules and justifies content to `flex-start`.
+ *
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex-start($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: flex-start;
+}
+
+/**
+ * Applies `flex` rules and justifies content to `flex-end`.
+ *
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex-end($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: flex-end;
+}
+
+/**
+ * Applies `flex` rules and justifies content to `center`.
+ *
+ * center  : Setting to any value except 0 (like 1) aligns items to center.
+ * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
+ * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
+ */
+@mixin flex-center($center: 0, $column: 0, $reverse: 0) {
+    @include flex($center, $column, $reverse);
+
+    justify-content: center;
+}

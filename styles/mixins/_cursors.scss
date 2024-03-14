@@ -1,3 +1,6 @@
+/**
+ * Adds a `:hover` rule that applies `cursor: pointer`.
+ */
 @mixin clickable {
     &:hover {
         cursor: pointer;

@@ -8,6 +8,9 @@ $syracuse_map: (
     4:#046865
 );
 
-@function syracuse($clr: 1, $invert: 0) {
+/**
+ * clr : The key of the color from 0 to 4.
+ */
+@function syracuse($clr: 0) {
     @return map.get($syracuse_map, $clr);
 }

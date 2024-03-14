@@ -8,6 +8,9 @@ $tea_green_map: (
     4:#898980
 );
 
-@function tea_green($clr: 1, $invert: 0) {
+/**
+ * clr : The key of the color from 0 to 4.
+ */
+@function tea_green($clr: 0) {
     @return map.get($tea_green_map, $clr);
 }

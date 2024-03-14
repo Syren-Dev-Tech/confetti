@@ -8,6 +8,9 @@ $navy_map: (
     4:#a6e1fa
 );
 
-@function navy($clr: 1, $invert: 0) {
+/**
+ * clr : The key of the color from 0 to 4.
+ */
+@function navy($clr: 0) {
     @return map.get($navy_map, $clr);
 }

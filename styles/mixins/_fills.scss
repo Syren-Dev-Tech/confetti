@@ -1,5 +1,9 @@
 @use 'sass:map';
 
+/**
+ * style : The name of a background style defined by `background-var`.
+ *       : Setting to `none` applies that style rule.
+ */
 @mixin background($style: 'MISSING') {
     @if $style ==none {
         background: none;
@@ -22,6 +26,11 @@
     }
 }
 
+/**
+ * style : The name of a color style defined by `color-var`.
+ *       : If the style doesn't exist, will get the background style
+ *       : and applies either black or white depending on the background.
+ */
 @mixin color($style: 'MISSING') {
     @if $style ==none {
         color: none;
@@ -50,6 +59,12 @@
 
 //
 
+/**
+ * style : The name of a background + color style defined by `background-var` and
+ *       : `color-var`.
+ *       : If the color style is undefined, will follow the black-or-white color
+ *       : rule based on the background color.
+ */
 @mixin fill($style: 'MISSING') {
     @include background($style);
     @include color($style);
@@ -57,10 +72,25 @@
 
 // 
 
+/**
+ * n : Some percent value from black (0) to white (100).
+ * a : Some decimal value from 0 (transparent) to 1 (opaque).
+ */
 @mixin background-grey($n: 0%, $a: 1) {
     background-color: hsla(0, 0%, $n, $a);
 }
 
+/**
+ * n : Some percent value from black (0) to white (100).
+ * a : Some decimal value from 0 (transparent) to 1 (opaque).
+ */
 @mixin color-grey($n: 0%, $a: 1) {
     color: hsla(0, 0%, $n, $a);
+}
+
+/**
+ * clr : Your background color, without it being applied.
+ */
+@mixin adaptive-color($clr) {
+    color: color-for-background($clr);
 }

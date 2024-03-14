@@ -1,5 +1,12 @@
 @use 'sass:map';
+@use 'sass:list';
 
+/**
+ * style : The name of a border style defined by border-var.
+ *       : Setting to `none` applies that style rule.
+ * side  : The border side to apply the style to.
+ *       : Empty means "all sides."
+ */
 @mixin border($style: 'MISSING', $side: '') {
     @if $side =='' {
         @if $style ==none {
@@ -22,6 +29,11 @@
 
 //
 
+/**
+ * style : The name of a shadow style defined by shadow-var.
+ *       : Setting to `none` applies that style rule.
+ * type  : The shadow type to apply, either 'box' or 'text'.
+ */
 @mixin shadow($style: 'MISSING', $type: 'box') {
     @if $style ==none {
         #{$type}-shadow: none;
@@ -34,6 +46,11 @@
 
 //
 
+/**
+ * radius : Some border radius amount.
+ * corder : The corner to apply the radius style to.
+ *        : Empty means "all corners."
+ */
 @mixin rounded($radius: 10px, $corner: '') {
     @if $corner =='' {
         border-radius: $radius;
@@ -45,6 +62,10 @@
     }
 }
 
+/**
+ * radius : Some border radius amount.
+ * side   : The side to apply the radius style to.
+ */
 @mixin rounded-side($radius: 10px, $side: 'top') {
     @if $corner =='top' {
         border-top-right-radius: $radius;
@@ -67,6 +88,9 @@
     }
 }
 
+/**
+ * Sets border radius to 50%, making square elements circular.
+ */
 @mixin circular() {
     @include rounded(50%);
 }

@@ -8,12 +8,9 @@ $indian_red_map: (
     4:#8c5e58
 );
 
-@function indian_red($clr: 1) {
+/**
+ * clr : The key of the color from 0 to 4.
+ */
+@function indian_red($clr: 0) {
     @return map.get($indian_red_map, $clr);
 }
-
-// 54f2eb
-// 3fa993
-// 3c2319
-// f4f0f7
-// 58868c

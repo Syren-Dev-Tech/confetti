@@ -2,6 +2,9 @@ $mobile_width: 480px;
 $tablet_width: 768px;
 $desktop_width: 1920px;
 
+/**
+ * size : One of 'mobile', 'tablet', or 'desktop'.
+ */
 @mixin device($size : 'mobile') {
     @if $size =='mobile' {
         @media screen and (max-width: $mobile_width) {

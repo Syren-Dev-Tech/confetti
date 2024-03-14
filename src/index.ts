@@ -1,4 +1,8 @@
-export function viteConfig(options) {
+type ConfigOptions = {
+    scss?: string
+}
+
+export function viteConfig(options: ConfigOptions) {
     return {
         css: {
             preprocessorOptions: {
@@ -12,6 +16,7 @@ export function viteConfig(options) {
         }
     };
 }
+
 export const palettes = [
     'indian_red',
     'mindaro',
@@ -21,4 +26,4 @@ export const palettes = [
     'syracuse',
     'tea_green',
     'tomato'
-];
+]

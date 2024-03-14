@@ -1,9 +1,33 @@
 {
-  "author": "ChrisOfNormandy",
-  "description": "A collection of styles to make routine designs simpler.",
-  "license": "MIT",
-  "main": "index.js",
-  "name": "confetti",
-  "type": "module",
-  "version": "1.0.0"
+    "author": "ChrisOfNormandy",
+    "description": "A collection of styles to make routine designs simpler.",
+    "license": "MIT",
+    "name": "@chrisofnormandy/confetti",
+    "type": "module",
+    "version": "1.0.1",
+    "main": "index.js",
+    "typings": "./index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "import": "./index.js"
+        },
+        "./*.scss": {
+            "import": "./styles/*.scss",
+            "require": "./styles/*.scss"
+        }
+    },
+    "files": [
+        "_main.scss",
+        "_pack.scss",
+        "index.js",
+        "styles"
+    ],
+    "scripts": {
+        "docs": "node x.docs.js",
+        "build": "rm -rf dist; tsc"
+    },
+    "dependencies": {
+        "sass": "^1.71.1"
+    }
 }
