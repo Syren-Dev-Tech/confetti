@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$syracuse_map: (
+$color_map: (
     0:#e53d00,
     1:#ffe900,
     2:#fcfff7,
@@ -11,6 +11,6 @@ $syracuse_map: (
 /**
  * clr : The key of the color from 0 to 4.
  */
-@function syracuse($clr: 0) {
+@function get-color($clr: 0) {
     @return map.get($syracuse_map, $clr);
 }

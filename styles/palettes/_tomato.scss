@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$tomato_map: (
+$color_map: (
     0:#fe4a49,
     1:#2ab7ca,
     2:#fed766,
@@ -11,6 +11,6 @@ $tomato_map: (
 /**
  * clr : The key of the color from 0 to 4.
  */
-@function tomato($clr: 0) {
+@function get-color($clr: 0) {
     @return map.get($tomato_map, $clr);
 }

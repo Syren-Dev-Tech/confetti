@@ -2,14 +2,15 @@ type ConfigOptions = {
     scss?: string
 }
 
-export function viteConfig(options: ConfigOptions) {
+export function viteConfigCss(options: ConfigOptions) {
     return {
         css: {
             preprocessorOptions: {
                 scss: {
                     additionalData: [
                         `@import "@chrisofnormandy/confetti/_pack.scss";`,
-                        options.scss || ''
+                        `@import "@chrisofnormandy/confetti/_themes.scss";`,
+                        options && options.scss || ''
                     ].join('\n')
                 }
             }

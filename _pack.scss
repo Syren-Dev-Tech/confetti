@@ -1,5 +1,1 @@
-@import 'styles/variables';
-@import 'styles/functions/color';
-
-@import 'styles/palettes';
-@import 'styles/mixins';
+@forward 'styles/mixins';

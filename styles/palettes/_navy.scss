@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$navy_map: (
+$color_map: (
     0:#00072d,
     1:#001c55,
     2:#0a2472,
@@ -11,6 +11,6 @@ $navy_map: (
 /**
  * clr : The key of the color from 0 to 4.
  */
-@function navy($clr: 0) {
+@function get-color($clr: 0) {
     @return map.get($navy_map, $clr);
 }

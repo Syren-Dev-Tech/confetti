@@ -1,7 +1,7 @@
 type ConfigOptions = {
     scss?: string;
 };
-export declare function viteConfig(options: ConfigOptions): {
+export declare function viteConfigCss(options: ConfigOptions): {
     css: {
         preprocessorOptions: {
             scss: {

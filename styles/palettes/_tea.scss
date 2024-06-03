@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$tea_green_map: (
+$color_map: (
     0:#def2c8,
     1:#c5dac1,
     2:#bcd0c7,
@@ -11,6 +11,6 @@ $tea_green_map: (
 /**
  * clr : The key of the color from 0 to 4.
  */
-@function tea_green($clr: 0) {
+@function get-color($clr: 0) {
     @return map.get($tea_green_map, $clr);
 }

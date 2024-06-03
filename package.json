@@ -13,13 +13,14 @@
             "import": "./index.js"
         },
         "./*.scss": {
-            "import": "./styles/*.scss",
-            "require": "./styles/*.scss"
+            "import": "./*.scss",
+            "require": "./*.scss"
         }
     },
     "files": [
         "_main.scss",
         "_pack.scss",
+        "_themes.scss",
         "index.js",
         "styles"
     ],

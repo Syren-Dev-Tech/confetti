@@ -1,9 +1,4 @@
-@import 'mixins/themes';
-
-@import 'mixins/cursors';
-@import 'mixins/flex';
-@import 'mixins/media';
-@import 'mixins/sizes';
-
-@import 'mixins/fills';
-@import 'mixins/borders';
+@forward 'mixins/cursors';
+@forward 'mixins/flex';
+@forward 'mixins/media';
+@forward 'mixins/sizes';

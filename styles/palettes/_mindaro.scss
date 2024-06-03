@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-$mindaro_map: (
+$color_map: (
     0:#edf67d,
     1:#f896d8,
     2:#ca7df9,
@@ -9,8 +9,8 @@ $mindaro_map: (
 );
 
 /**
- * clr : The key of the color from 0 to 4.
+ * clr : The key of the color from 0 to  4.
  */
-@function mindaro($clr: 0) {
+@function get-color($clr: 0) {
     @return map.get($mindaro_map, $clr);
 }
