@@ -1,5 +1,4 @@
-@use 'sass:map';
-@use 'sass:list';
+@use '../variables' as *;
 
 /**
  * style : The name of a border style defined by border-var.
@@ -14,7 +13,7 @@
         }
 
         @else {
-            border: map.get($borders, $style);
+            border: map-get($borders, $style);
         }
     }
 
@@ -23,7 +22,7 @@
     }
 
     @else {
-        border-#{$side}: map.get($borders, $style);
+        border-#{$side}: map-get($borders, $style);
     }
 }
 
@@ -40,57 +39,6 @@
     }
 
     @else {
-        #{$type}-shadow: map.get($shadows, $style);
+        #{$type}-shadow: map-get($shadows, $style);
     }
-}
-
-//
-
-/**
- * radius : Some border radius amount.
- * corder : The corner to apply the radius style to.
- *        : Empty means "all corners."
- */
-@mixin rounded($radius: 10px, $corner: '') {
-    @if $corner =='' {
-        border-radius: $radius;
-        
-    }
-
-    @else {
-        border-#{$corner}-radius: $radius;
-    }
-}
-
-/**
- * radius : Some border radius amount.
- * side   : The side to apply the radius style to.
- */
-@mixin rounded-side($radius: 10px, $side: 'top') {
-    @if $corner =='top' {
-        border-top-right-radius: $radius;
-        border-top-left-radius: $radius;
-    }
-
-    @else if $corner =='right' {
-        border-top-right-radius: $radius;
-        border-bottom-right-radius: $radius;
-    }
-
-    @else if $corner =='bottom' {
-        border-bottom-left-radius: $radius;
-        border-bottom-right-radius: $radius;
-    }
-
-    @else if $corner == 'left' {
-        border-top-left-radius: $radius;
-        border-bottom-left-radius: $radius;
-    }
-}
-
-/**
- * Sets border radius to 50%, making square elements circular.
- */
-@mixin circular() {
-    @include rounded(50%);
 }

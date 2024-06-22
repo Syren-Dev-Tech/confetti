@@ -1,24 +1,25 @@
 @use 'sass:map';
 @use 'sass:color';
+@use './functions/color' as *;
 
-@use 'palettes/indian';
-@use 'palettes/mindaro';
-@use 'palettes/navy';
-@use 'palettes/pink';
-@use 'palettes/rust';
-@use 'palettes/syracuse';
-@use 'palettes/tea';
-@use 'palettes/tomato';
+@use 'palettes/india' as p_india;
+@use 'palettes/mindaro' as p_mindaro;
+@use 'palettes/navy' as p_navy;
+@use 'palettes/pink' as p_pink;
+@use 'palettes/rust' as p_rust;
+@use 'palettes/syracuse' as p_syracuse;
+@use 'palettes/tea' as p_tea;
+@use 'palettes/tomato' as p_tomato;
 
 $palettes: (
-    'indian_red': indian.$color_map,
-    'mindaro': mindaro.$color_map,
-    'navy': navy.$color_map,
-    'pink' pink.$color_map,
-    'rust': rust.$color_map,
-    'syracuse': syracuse.$color_map,
-    'tea_green': tea.$color_map,
-    'tomato': tomato.$color_map
+    'india_red': p_india.$color_map,
+    'mindaro': p_mindaro.$color_map,
+    'navy': p_navy.$color_map,
+    'pink': p_pink.$color_map,
+    'rust': p_rust.$color_map,
+    'syracuse': p_syracuse.$color_map,
+    'tea_green': p_tea.$color_map,
+    'tomato': p_tomato.$color_map
 );
 
 /**

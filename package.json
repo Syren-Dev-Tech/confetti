@@ -5,28 +5,14 @@
     "name": "@chrisofnormandy/confetti",
     "type": "module",
     "version": "1.0.1",
-    "main": "index.js",
-    "typings": "./index.d.ts",
-    "exports": {
-        ".": {
-            "require": "./index.js",
-            "import": "./index.js"
-        },
-        "./*.scss": {
-            "import": "./*.scss",
-            "require": "./*.scss"
-        }
-    },
     "files": [
-        "_main.scss",
+        "main.scss",
         "_pack.scss",
         "_themes.scss",
-        "index.js",
         "styles"
     ],
     "scripts": {
-        "docs": "node x.docs.js",
-        "build": "rm -rf dist; tsc"
+        "docs": "node x.docs.js"
     },
     "dependencies": {
         "sass": "^1.71.1"

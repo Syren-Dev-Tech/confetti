@@ -1,5 +1,7 @@
 @use 'sass:map';
 @use 'sass:color';
+@use '../functions/color' as *;
+@use '../variables' as *;
 
 /**
  * name  : The name of a background style to define.
