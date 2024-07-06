@@ -1,0 +1,21 @@
+@use 'palettes' as *;
+@use 'themeify/helpers' as *;
+@use 'palettes/common' as common;
+
+@forward 'palettes';
+
+@mixin themeify() {
+    .theme {
+        @each $name, $theme in $palettes {
+            &.#{$name} {
+                @each $p, $clr in $theme {
+                    @include applied-theme($p, $clr);
+                }
+            }
+        }
+
+        @each $p, $clr in common.$palette {
+            @include applied-theme($p, $clr);
+        }
+    }
+}

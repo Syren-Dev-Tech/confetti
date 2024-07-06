@@ -3,15 +3,15 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex($center: 0, $column: 0, $reverse: 0) {
+@mixin flex($center: false, $column: false, $reverse: false) {
     display: flex;
 
-    @if $center !=0 {
+    @if $center {
         align-items: center;
     }
 
-    @if $column !=0 {
-        @if $reverse !=0 {
+    @if $column {
+        @if $reverse {
             flex-direction: column-reverse;
         }
 
@@ -20,7 +20,7 @@
         }
     }
 
-    @if $reverse !=0 {
+    @if $reverse {
         flex-direction: row-reverse;
     }
 }
@@ -32,7 +32,7 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex-between($center: 0, $column: 0, $reverse: 0) {
+@mixin flex-between($center: false, $column: false, $reverse: false) {
     @include flex($center, $column, $reverse);
 
     justify-content: space-between;
@@ -45,7 +45,7 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex-even($center: 0, $column: 0, $reverse: 0) {
+@mixin flex-even($center: false, $column: false, $reverse: false) {
     @include flex($center, $column, $reverse);
 
     justify-content: space-evenly;
@@ -58,7 +58,7 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex-start($center: 0, $column: 0, $reverse: 0) {
+@mixin flex-start($center: false, $column: false, $reverse: false) {
     @include flex($center, $column, $reverse);
 
     justify-content: flex-start;
@@ -71,7 +71,7 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex-end($center: 0, $column: 0, $reverse: 0) {
+@mixin flex-end($center: false, $column: false, $reverse: false) {
     @include flex($center, $column, $reverse);
 
     justify-content: flex-end;
@@ -84,7 +84,7 @@
  * column  : Setting to any value except 0 (like 1) aligns as a column (vs row, default).
  * reverse : Setting to any value except 0 (like 1) reverses the column / row style.
  */
-@mixin flex-center($center: 0, $column: 0, $reverse: 0) {
+@mixin flex-center($center: false, $column: false, $reverse: false) {
     @include flex($center, $column, $reverse);
 
     justify-content: center;

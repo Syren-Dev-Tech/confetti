@@ -1,0 +1,207 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+@use '../functions/color' as *;
+@use '../mixins/cursors' as *;
+
+$monoHover: 0.2;
+$monoDisabled: 0.4;
+
+/*
+    Style formatter:
+    f   : Apply background color
+    c   : Apply color
+    b   : Apply border color
+
+    Color controller:
+    <none>  : Apply normal color
+    i       : Invert color
+    c       : Compliment color
+
+    Other style controllers:
+    With all:
+        .hvr    : Applies "on hover" styles, which changes the color
+                  to be darker or lighter (inverse of font coloring)
+    With `f`:
+        .nac    : Do not apply color (black or white) to background
+                  automatically
+*/
+
+@mixin apply-bg($clr) {
+    background-color: $clr;
+
+    &:not(.nac) {
+        color: color-for-background($clr);
+    }
+}
+
+@mixin apply-hvr-bg($clr, $darkFont) {
+    &.hvr {
+        @include hoverable() {
+            @if $darkFont {
+                @include apply-bg(monochrome($clr, -1 * $monoHover));
+            }
+
+            @else {
+                @include apply-bg(monochrome($clr, $monoHover));
+            }
+        }
+    }
+
+    &.dis {
+
+        &:disabled,
+        .disabled {
+            @if $darkFont {
+                @include apply-bg(monochrome($clr, -1 * $monoDisabled));
+            }
+
+            @else {
+                @include apply-bg(monochrome($clr, $monoDisabled));
+            }
+        }
+    }
+}
+
+@mixin apply-hvr-clr($clr, $darkFont) {
+    &.hvr {
+        @include hoverable() {
+            @if $darkFont {
+                color: monochrome($clr, -0.2);
+            }
+
+            @else {
+                color: monochrome($clr, 0.2);
+            }
+        }
+    }
+}
+
+@mixin apply-hvr-bdr($clr, $darkFont) {
+    &.hvr {
+        @include hoverable() {
+            @if $darkFont {
+                border-color: monochrome($clr, -0.2);
+            }
+
+            @else {
+                border-color: monochrome($clr, 0.2);
+            }
+        }
+    }
+}
+
+@mixin fills($name, $clr, $darkFont) {
+    .f-#{$name} {
+        @for $i from 1 to 10 {
+            $n: math.div($i, 10);
+
+            &.d#{$i}-f {
+                $c: monochrome($clr, -1 * $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+
+            &.l#{$i}-f {
+                $c: monochrome($clr, $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+        }
+
+        @include apply-bg($clr);
+        @include apply-hvr-bg($clr, $darkFont);
+    }
+
+    .f-#{$name}-i {
+        $iClr: invert($clr);
+
+        @for $i from 1 to 10 {
+            $n: math.div($i, 10);
+
+            &.d#{$i}-f {
+                $c: monochrome($iClr, -1 * $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+
+            &.l#{$i}-f {
+                $c: monochrome($iClr, -1 * $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+        }
+
+        @include apply-bg($iClr);
+        @include apply-hvr-bg($iClr, $darkFont);
+    }
+
+    .f-#{$name}-c {
+        $cClr: compliment($clr);
+
+        @for $i from 1 to 10 {
+            $n: math.div($i, 10);
+
+            &.d#{$i}-f {
+                $c: monochrome($cClr, -1 * $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+
+            &.l#{$i}-f {
+                $c: monochrome($cClr, -1 * $n);
+                @include apply-bg($c);
+                @include apply-hvr-bg($c, $darkFont);
+            }
+        }
+
+        @include apply-bg($cClr);
+        @include apply-hvr-bg($cClr, $darkFont);
+    }
+}
+
+@mixin colors($name, $clr, $darkFont) {
+    .c-#{$name} {
+        color: $clr;
+        @include apply-hvr-clr($clr, $darkFont);
+    }
+
+    .c-#{$name}-i {
+        $iClr: invert($clr);
+        color: $iClr;
+        @include apply-hvr-clr($iClr, $darkFont);
+    }
+
+    .c-#{$name}-c {
+        $cClr: compliment($clr);
+        color: $cClr;
+        @include apply-hvr-clr($cClr, $darkFont);
+    }
+}
+
+@mixin borders($name, $clr, $darkFont) {
+    .b-#{$name} {
+        border-color: $clr;
+        @include apply-hvr-bdr($clr, $darkFont);
+    }
+
+    .b-#{$name}-i {
+        $iClr: invert($clr);
+        border-color: $iClr;
+        @include apply-hvr-bdr($iClr, $darkFont);
+    }
+
+    .b-#{$name}-c {
+        $cClr: compliment($clr);
+        border-color: $cClr;
+        @include apply-hvr-bdr($cClr, $darkFont);
+    }
+}
+
+@mixin applied-theme($name, $clr) {
+    $darkFont: useBlackFont($clr);
+
+    @include fills($name, $clr, $darkFont);
+    @include colors($name, $clr, $darkFont);
+    @include borders($name, $clr, $darkFont);
+}

@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'sass:color';
 @use './functions/color' as *;
+@use './mixins/cursors' as *;
 
 @use 'palettes/india' as p_india;
 @use 'palettes/mindaro' as p_mindaro;
@@ -12,14 +13,14 @@
 @use 'palettes/tomato' as p_tomato;
 
 $palettes: (
-    'india_red': p_india.$color_map,
-    'mindaro': p_mindaro.$color_map,
-    'navy': p_navy.$color_map,
-    'pink': p_pink.$color_map,
-    'rust': p_rust.$color_map,
-    'syracuse': p_syracuse.$color_map,
-    'tea_green': p_tea.$color_map,
-    'tomato': p_tomato.$color_map
+    'india_red': p_india.$palette,
+    'mindaro': p_mindaro.$palette,
+    'navy': p_navy.$palette,
+    'pink': p_pink.$palette,
+    'rust': p_rust.$palette,
+    'syracuse': p_syracuse.$palette,
+    'tea_green': p_tea.$palette,
+    'tomato': p_tomato.$palette
 );
 
 /**
@@ -61,23 +62,4 @@ $palettes: (
     $palettes: map.merge(map.get($palettes, $palette), ($name, $color)) !global;
 
     @return $palettes;
-}
-
-/**
- * name   :
- * colors :
- */
-@mixin def-palette($name, $colors...) {
-    $i: 0;
-
-    $new_palette: (
-    );
-
-@each $color in $colors {
-    $new_palette: map.merge($new_palette, ($i: $color));
-
-    $i: $i + 1;
-}
-
-$palettes: map.merge($palettes, ($name: $new_palette)) !global;
 }

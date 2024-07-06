@@ -1,16 +1,18 @@
 @use 'sass:map';
 
-$color_map: (
-    0:#e53d00,
-    1:#ffe900,
-    2:#fcfff7,
-    3:#21a0a0,
-    4:#046865
+$theme: (
+    primary:#e53d00,
+    secondary:#ffe900,
+    trinary:#fcfff7,
+    pri-comp:#21a0a0,
+    sec-comp:#046865
 );
 
-/**
- * clr : The key of the color from 0 to 4.
- */
-@function get-color($clr: 0) {
-    @return map.get($syracuse_map, $clr);
-}
+$base: (
+    main: #272020,
+    body: #3c3232,
+    content: #514444,
+    divider: #ab9b9b
+);
+
+$palette: map-merge($theme, $base);

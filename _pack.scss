@@ -1,1 +1,20 @@
 @forward 'styles/mixins';
+
+@use 'styles/mixins' as *;
+
+.circular {
+    @include circular;
+}
+
+.noshow {
+    visibility: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.icon {
+    font-size: inherit;
+    line-height: 0; // Fixes uneven width and height issue.
+}

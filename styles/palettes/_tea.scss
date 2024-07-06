@@ -1,16 +1,18 @@
 @use 'sass:map';
 
-$color_map: (
-    0:#def2c8,
-    1:#c5dac1,
-    2:#bcd0c7,
-    3:#a9b2ac,
-    4:#898980
+$theme: (
+    primary:#def2c8,
+    secondary:#c5dac1,
+    trinary:#bcd0c7,
+    pri-comp:#a9b2ac,
+    sec-comp:#898980
 );
 
-/**
- * clr : The key of the color from 0 to 4.
- */
-@function get-color($clr: 0) {
-    @return map.get($tea_green_map, $clr);
-}
+$base: (
+    main: #272020,
+    body: #3c3232,
+    content: #514444,
+    divider: #ab9b9b
+);
+
+$palette: map-merge($theme, $base);

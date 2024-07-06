@@ -1,16 +1,18 @@
 @use 'sass:map';
 
-$color_map: (
-    0:#edf67d,
-    1:#f896d8,
-    2:#ca7df9,
-    3:#724cf9,
-    4:#564592
+$theme: (
+    primary:#edf67d,
+    secondary:#f896d8,
+    trinary:#ca7df9,
+    pri-comp:#724cf9,
+    sec-comp:#564592
 );
 
-/**
- * clr : The key of the color from 0 to  4.
- */
-@function get-color($clr: 0) {
-    @return map.get($mindaro_map, $clr);
-}
+$base: (
+    main: #272020,
+    body: #3c3232,
+    content: #514444,
+    divider: #ab9b9b
+);
+
+$palette: map-merge($theme, $base);

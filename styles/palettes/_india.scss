@@ -1,16 +1,18 @@
 @use 'sass:map';
 
-$color_map: (
-    0:#f2545b,
-    1:#a93f55,
-    2:#19323c,
-    3:#f3f7f0,
-    4:#8c5e58
+$theme: (
+    primary:#f2545b,
+    secondary:#a93f55,
+    trinary:#19323c,
+    pri-comp:#f3f7f0,
+    sec-comp:#8c5e58
 );
 
-/**
- * clr : The key of the color from 0 to 4.
- */
-@function get-color($clr: 0) {
-    @return map.get($india_red_map, $clr);
-}
+$base: (
+    main: #272020,
+    body: #3c3232,
+    content: #514444,
+    divider: #ab9b9b
+);
+
+$palette: map-merge($theme, $base);
