@@ -2,8 +2,6 @@
 @use 'themeify/helpers' as *;
 @use 'palettes/common' as common;
 
-@forward 'palettes';
-
 @mixin themeify() {
     .theme {
         @each $name, $theme in $palettes {

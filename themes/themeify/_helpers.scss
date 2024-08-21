@@ -1,8 +1,8 @@
 @use 'sass:map';
 @use 'sass:math';
 @use 'sass:color';
-@use '../functions/color' as *;
-@use '../mixins/cursors' as *;
+@use '../../coloring/color' as *;
+@use '../../interactive/cursors' as *;
 
 $monoHover: 0.2;
 $monoDisabled: 0.4;

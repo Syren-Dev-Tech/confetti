@@ -21,3 +21,20 @@ html {
 ul {
     list-style-type: none;
 }
+
+.circular {
+    border-radius: 50%;
+}
+
+.noshow {
+    visibility: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.icon {
+    font-size: inherit;
+    line-height: 0; // Fixes uneven width and height issue.
+}

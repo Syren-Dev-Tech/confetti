@@ -1,20 +1,28 @@
 {
     "author": "ChrisOfNormandy",
     "description": "A collection of styles to make routine designs simpler.",
+    "files": [
+        "_coloring.scss",
+        "_dyn-themes.scss",
+        "_interactive.scss",
+        "_layout.scss",
+        "_styling.scss",
+        "_themes.scss",
+        "index.js",
+        "main.scss"
+    ],
     "license": "MIT",
+    "module": "index.js",
+    "main": "index.js",
+    "types": "index.d.ts",
     "name": "@chrisofnormandy/confetti",
     "type": "module",
-    "version": "1.0.1",
-    "files": [
-        "main.scss",
-        "_pack.scss",
-        "_themes.scss",
-        "styles"
-    ],
-    "scripts": {
-        "docs": "node x.docs.js"
-    },
+    "version": "1.1.0",
     "dependencies": {
-        "sass": "^1.71.1"
+        "sass": "^1.77.8"
+    },
+    "scripts": {
+        "build": "tsc index.ts --target esnext -d",
+        "docs": "node x.docs.js"
     }
 }

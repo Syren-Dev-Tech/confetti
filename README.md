@@ -4,81 +4,58 @@ Why does this "package" exist?
 
 Basically, I'm tired of writing the same set of preset styles over and over.
 
-So, here we are. A collection of SCSS stylesheets for everyday styles.
+So, here we are - a collection of SCSS stylesheets for everyday styles.
 
-## Getting Started
+## Installation
 
-Super simple.
+Super simple:
 
 `yarn add https://github.com/ChrisOfNormandy/confetti`
 
-This is designed for React Vite, so all you need to do is import the config in `index.js`.
+> :point_up: To install a specific branch, such as `dev`, add `.git#dev` to the end!
 
-That would make the `vite.config.js` file something like:
+## Usage
 
-```js
+I wrote this with the intended use with React+Vite, so I've provided `index.ts` (`index.js`) to define basic Vite config content.
+
+In the Vite config, you can supply aliases like:
+
+```ts
+import { viteConfigAliases } from '@chrisofnormandy/confetti';
+
 export default defineConfig({
-    ...viteConfig(),
-    // Etc...
-}
+    // ...
+    resolve: {
+        alias: {
+            ...viteConfigAliases()
+        }
+    },
+    // ...
+});
 ```
 
-This imports the `_pack.scss` file as global.
+There is an optional argument that defines a set of aliases returned by this `viteConfigAliases` function.
+The value of each becomes the alias, such that `{layout: '~banana'}` would define `~banana` as the alias for the "layout" import.
 
-### Config Options
-
-If you want to add more SCSS imports, add the option:
-
-```json
-{
-    "scss": "...scss string..."
-}
-```
-
-For example, to include a new palette:
-
-```js
-...viteConfig({ scss: `:root { @include def-palette('test', #ff0000, #ffff00, #00ff00, #00ffff, #0000ff); }` })
-```
-
-## Palettes
-
-I'm not a palette or design concept artist.
-
-You can use something like this site: https://coolors.co/generate
-
-... to generate basic color palettes.
-
-Palettes here are defined per file like:
+In the SCSS files, to use this content, "import" (use) as:
 
 ```scss
-@use 'sass:map';
+@use '~layout' as layout;
 
-$theme_map: (
-    0: #ff0000,
-    1: #ffff00,
-    2: #00ff00,
-    3: #00ffff,
-    4: #0000ff
-);
-
-@function theme($color) {
-    @return map.get($theme_map, $color);
+.example {
+    @use layout.flex;
 }
 ```
 
-Because I suck at coming up with theme names, I just call them the first or second "Crayola" colors on the list.
+There is some basic "boilerplate" CSS content defined in `main.scss`.
 
-I supply all palettes in a map for "easy looping."
+To include this, and to import and use the preset theme content:
 
 ```scss
-$palettes: (
-    'name': $theme_map
-);
+@use '~themes' as themes;
+@use '@chrisofnormandy/confetti/main.scss';
 
-$clr: palette($paletteName, $n);
-
-$clr: palette-inverse($paletteName, $n);
-
-$clr: palette-compliment($paletteName, $n);
+@include themes.themeify();
 ```
+
+**Only import `main.scss` once.**

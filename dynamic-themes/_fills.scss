@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use '../functions/color' as *;
-@use '../variables' as *;
+@use '../coloring/color' as *;
+@use 'maps' as *;
 
 /**
  * style : The name of a background style defined by `background-var`.
@@ -12,7 +12,7 @@
     }
 
     @else if map.has-key($backgrounds, $style) {
-        $clr: map.get($backgrounds, $style);
+        $clr: map-get($backgrounds, $style);
 
         @debug 'BACKGROUND-COLOR: #{$clr}';
 
@@ -20,7 +20,7 @@
     }
 
     @else {
-        $clr: map.get($backgrounds, 'MISSING');
+        $clr: map-get($backgrounds, 'MISSING');
 
         @debug 'MISSING BACKGROUND-COLOR: #{$style}';
 
@@ -39,7 +39,7 @@
     }
 
     @else if map.has-key($colors, $style) {
-        $clr: map.get($colors, $style);
+        $clr: map-get($colors, $style);
 
         @debug 'COLOR: #{$clr}';
 
@@ -47,7 +47,7 @@
     }
 
     @else if map.has-key($backgrounds, $style) {
-        $clr: map.get($backgrounds, $style);
+        $clr: map-get($backgrounds, $style);
 
         @debug 'BACKGROUND-COLOR: #{$clr}';
 
@@ -55,7 +55,7 @@
     }
 
     @else {
-        color: map.get($colors, 'MISSING');
+        color: map-get($colors, 'MISSING');
     }
 }
 
@@ -70,29 +70,4 @@
 @mixin fill($style: 'MISSING') {
     @include background($style);
     @include color($style);
-}
-
-// 
-
-/**
- * n : Some percent value from black (0) to white (100).
- * a : Some decimal value from 0 (transparent) to 1 (opaque).
- */
-@mixin background-grey($n: 0%, $a: 1) {
-    background-color: hsla(0, 0%, $n, $a);
-}
-
-/**
- * n : Some percent value from black (0) to white (100).
- * a : Some decimal value from 0 (transparent) to 1 (opaque).
- */
-@mixin color-grey($n: 0%, $a: 1) {
-    color: hsla(0, 0%, $n, $a);
-}
-
-/**
- * clr : Your background color, without it being applied.
- */
-@mixin adaptive-color($clr) {
-    color: color-for-background($clr);
 }

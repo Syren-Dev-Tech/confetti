@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:color';
-@use './functions/color' as *;
-@use './mixins/cursors' as *;
+@use '../coloring/color' as *;
+@use '../interactive/cursors' as *;
 
 @use 'palettes/india' as p_india;
 @use 'palettes/mindaro' as p_mindaro;

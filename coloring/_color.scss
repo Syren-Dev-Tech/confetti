@@ -5,8 +5,6 @@ $green_threshold: 0.587;
 $blue_threshold: 0.114;
 $font_threshold: 186;
 
-//
-
 /**
  * hexColor : Some hex color like #ff0000, which gets converted to rgb
  *          : and complimented to rgb(0, 255, 255).
@@ -57,7 +55,7 @@ $font_threshold: 186;
  *        : A value of 0 returns the color provided.
  */
 @function monochrome($color, $amount) {
-    @if $amount == 0 {
+    @if $amount ==0 {
         @return $color;
     }
 
@@ -65,7 +63,7 @@ $font_threshold: 186;
     $g: green($color);
     $b: blue($color);
 
-    @if $amount > 0 {
+    @if $amount >0 {
         $x: 255 - $r;
         $y: 255 - $g;
         $z: 255 - $b;

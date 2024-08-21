@@ -1,7 +1,2 @@
-@forward 'styles/functions/color';
-
-@forward 'styles/themeify';
-
-@forward 'styles/mixins/fills';
-@forward 'styles/mixins/borders';
-@forward 'styles/mixins/themes';
+@forward 'themes/palettes';
+@forward 'themes/themeify';
