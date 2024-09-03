@@ -10,9 +10,9 @@ So, here we are - a collection of SCSS stylesheets for everyday styles.
 
 Super simple:
 
-`yarn add https://github.com/ChrisOfNormandy/confetti`
+`yarn add https://github.com/ChrisOfNormandy/confetti.git`
 
-> :point_up: To install a specific branch, such as `dev`, add `.git#dev` to the end!
+> :point_up: To install a specific branch, such as `dev`, add `#dev` to the end!
 
 ## Usage
 
