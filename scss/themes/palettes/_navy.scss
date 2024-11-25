@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+$theme: (
+    primary:#00072d,
+    secondary:#001c55,
+    trinary:#0a2472,
+    primary-compliment:#0e6ba8,
+    secondary-compliment:#a6e1fa,
+    trinary-compliment: #537494
+);
+
+$base: (
+    main: #02041b,
+    body: #0b122d,
+    content: #1a233f,
+    divider: #2c3659
+);
+
+$palette: map.merge($theme, $base);

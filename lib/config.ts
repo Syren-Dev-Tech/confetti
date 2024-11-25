@@ -17,3 +17,15 @@ export function viteConfigAliases(overrides: Overrides = {}) {
         [overrides.themes || '~themes']: '@chrisofnormandy/confetti/_themes.scss'
     }
 }
+
+export function viteConfigScss() {
+    return {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler',
+                },
+            },
+        },
+    }
+}

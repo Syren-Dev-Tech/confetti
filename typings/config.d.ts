@@ -9,4 +9,13 @@ interface Overrides {
 export declare function viteConfigAliases(overrides?: Overrides): {
     [x: string]: string;
 };
+export declare function viteConfigScss(): {
+    css: {
+        preprocessorOptions: {
+            scss: {
+                api: string;
+            };
+        };
+    };
+};
 export {};

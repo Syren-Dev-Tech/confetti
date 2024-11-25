@@ -13,13 +13,13 @@
 @use 'palettes/tomato' as p_tomato;
 
 $palettes: (
-    'india_red': p_india.$palette,
+    'india': p_india.$palette,
     'mindaro': p_mindaro.$palette,
     'navy': p_navy.$palette,
     'pink': p_pink.$palette,
     'rust': p_rust.$palette,
     'syracuse': p_syracuse.$palette,
-    'tea_green': p_tea.$palette,
+    'tea': p_tea.$palette,
     'tomato': p_tomato.$palette
 );
 
@@ -27,8 +27,16 @@ $palettes: (
  * palette :
  * n       :
  */
-@function palette($palette, $n) {
-    @return map.get(map.get($palettes, $palette), $n);
+@function get-palette($palette) {
+    @return map.get($palettes, $palette);
+}
+
+/**
+ * palette :
+ * n       :
+ */
+@function get-palette-color($palette, $n) {
+    @return map.get(get-palette($palette), $n);
 }
 
 /**
