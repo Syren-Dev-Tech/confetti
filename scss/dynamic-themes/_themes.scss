@@ -1,5 +1,5 @@
-@use 'sass:map';
 @use 'sass:color';
+@use 'sass:map';
 @use '../coloring/color' as *;
 @use 'maps' as *;
 
@@ -8,7 +8,7 @@
  * value : The color value to map to the provided name.
  */
 @mixin background-var($name, $value) {
-    $backgrounds: map-merge($backgrounds, ($name: $value)) !global;
+    $backgrounds: map.merge($backgrounds, ($name: $value)) !global;
 
     @debug 'Add #{$name} to backgrounds using #{$value}.';
 }
@@ -18,7 +18,7 @@
  * value : The color value to map to the provided name.
  */
 @mixin color-var($name, $value) {
-    $colors: map-merge($backgrounds, ($name: $value)) !global;
+    $colors: map.merge($backgrounds, ($name: $value)) !global;
 
     @debug 'Add #{$name} to colors using #{$value}.';
 }
@@ -81,13 +81,13 @@
  * fade  :
  */
 @mixin shadow-var($name, $color, $x: 2px, $y: 2px, $fade: 2px) {
-    $shadows: map-merge($backgrounds, ($name: $color $x $y $fade)) !global;
+    $shadows: map.merge($backgrounds, ($name: $color $x $y $fade)) !global;
 
     @debug 'Add #{$name} to shadows using #{$color} #{$x} #{$y} #{$fade}.';
 }
 
 @mixin border-var($name, $stroke, $thickness: 1px, $style: solid) {
-    $borders: map-merge($backgrounds, ($name: $thickness $style $stroke)) !global;
+    $borders: map.merge($backgrounds, ($name: $thickness $style $stroke)) !global;
 
     @debug 'Add #{$name} to borders using #{$thickness} #{$style} #{$stroke}.';
 }

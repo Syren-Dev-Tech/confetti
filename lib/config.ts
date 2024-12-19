@@ -1,4 +1,13 @@
-export function viteConfigAliases(overrides = {}) {
+interface Overrides {
+    coloring?: string;
+    dynThemes?: string;
+    interactive?: string;
+    layout?: string;
+    styling?: string;
+    themes?: string;
+}
+
+export function viteConfigAliases(overrides: Overrides = {}) {
     return {
         [overrides.coloring || '~coloring']: '@chrisofnormandy/confetti/_coloring.scss',
         [overrides.dynThemes || '~dynthemes']: '@chrisofnormandy/confetti/_dyn-themes.scss',
@@ -6,5 +15,17 @@ export function viteConfigAliases(overrides = {}) {
         [overrides.layout || '~layout']: '@chrisofnormandy/confetti/_layout.scss',
         [overrides.styling || '~styling']: '@chrisofnormandy/confetti/_styling.scss',
         [overrides.themes || '~themes']: '@chrisofnormandy/confetti/_themes.scss'
-    };
+    }
+}
+
+export function viteConfigScss() {
+    return {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler',
+                },
+            },
+        },
+    }
 }

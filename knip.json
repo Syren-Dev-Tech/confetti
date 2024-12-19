@@ -1,0 +1,13 @@
+{
+    "$schema": "https://unpkg.com/knip@5/schema.json",
+    "entry": [
+        "lib/config.ts",
+        "lib/themes.ts"
+    ],
+    "ignore": [
+        "dist/**/*"
+    ],
+    "ignoreDependencies": [
+        "sass"
+    ]
+}

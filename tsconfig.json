@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "esModuleInterop": false,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "declaration": true,
+        "declarationDir": "./dist",
+        "outDir": "./dist",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": false,
+        "strict": true,
+        "target": "esnext",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+    },
+    "include": [
+        "lib"
+    ],
+    "exclude": [
+        "./**/*.mjs",
+        "./scss/**/*"
+    ]
+}
