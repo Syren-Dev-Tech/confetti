@@ -12,11 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Enable corepack
+        run: corepack enable
+      - name: Node setup
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: yarn
-      - run: yarn build
+          cache: 'yarn'
+      - name: 'Do the build'
+        run: yarn && yarn build
+      - name: 'Upload dist as artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 1
 
   publish-gpr:
     needs: build
@@ -26,11 +36,19 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: 'Node setup'
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://npm.pkg.github.com/
-      - run: yarn
-      - run: npm publish
+      - name: 'Fetch dist artifact from build'
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: 'List built content'   
+        run: ls -R dist
+      - name: 'Publish the package'
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
