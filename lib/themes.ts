@@ -5,7 +5,7 @@ export const LIGHT_THEMES = new Set<ThemeName>(['mindaro', 'pink', 'syracuse', '
 
 export type ColorScheme = 'light' | 'dark';
 
-type StyleFormat = 'f' | 'b' | 'c';
+export type StyleFormat = 'f' | 'b' | 'c';
 export type PaletteStyle = 'primary' | 'secondary' | 'trinary' | 'primary-compliment' | 'secondary-compliment' | 'trinary-compliment' | 'main' | 'body' | 'content' | 'divider';
 export type CommonStyle = 'success' | 'hazard' | 'warning' | 'info' | 'exit' | 'active' | 'inactive' | 'neutral';
 export type StyleMode = 'c' | 'i';
@@ -44,19 +44,19 @@ function colorStyle(style: StyleName, mode?: StyleMode, mono?: number) {
     return getStyleClass('c', style, mode, mono);
 }
 
-type ThemeListener = (theme: ThemeName, colorScheme: ColorScheme) => void;
+export type ThemeListener = (theme: ThemeName, colorScheme: ColorScheme) => void;
 
 const THEME_CHANGE_CLASS = '__theme-change';
 const COLOR_SCHEME_DARK = '(prefers-color-scheme: dark)';
 const COLOR_SCHEME_LIGHT = '(prefers-color-scheme: light)';
 
-interface IThemeOption {
+export interface IThemeOption {
     style?: StyleName
     mode?: StyleMode
     mono?: number
 }
 
-type ThemeOption = IThemeOption & {
+export type ThemeOption = IThemeOption & {
     style: StyleName
 }
 
@@ -66,11 +66,13 @@ export interface ThemeOptions<T extends IThemeOption> {
     color?: T
 }
 
+export type ThemeProp = ThemeOptions<ThemeOption>
+
 export interface ThemeProps {
-    theme?: ThemeOptions<ThemeOption>
+    theme?: ThemeProp
 }
 
-class Theme {
+export class Theme {
     private readonly themes = new Set<ThemeName>();
     private defaultTheme?: ThemeName;
     private listeners = new Map<string, ThemeListener>();

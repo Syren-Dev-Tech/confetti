@@ -3,9 +3,9 @@
     "description": "A collection of styles to make routine designs simpler.",
     "license": "MIT",
     "name": "@chrisofnormandy/confetti",
-    "packageManager": "yarn@4.5.3",
+    "packageManager": "yarn@4.6.0",
     "type": "module",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "files": [
         "scss",
         "dist"
@@ -30,7 +30,7 @@
         "knip": "^5.41.0",
         "sass": "^1.83.0",
         "typescript": "^5.7.2",
-        "typescript-eslint": "^8.18.1"
+        "typescript-eslint": "^8.19.0"
     },
     "peerDependencies": {
         "sass": ">=1.83"
