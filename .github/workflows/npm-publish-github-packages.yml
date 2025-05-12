@@ -19,8 +19,12 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: 'Do the build'
         run: yarn && yarn build
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: 'Upload dist as artifact'
         uses: actions/upload-artifact@v4
         with:
