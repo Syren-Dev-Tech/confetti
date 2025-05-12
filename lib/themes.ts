@@ -1,7 +1,26 @@
 export type ThemeName = string;
-export const THEMES = new Set<ThemeName>(['india', 'mindaro', 'navy', 'pink', 'rust', 'syracuse', 'tea', 'tomato']);
-export const DARK_THEMES = new Set<ThemeName>(['india', 'navy', 'rust']);
-export const LIGHT_THEMES = new Set<ThemeName>(['mindaro', 'pink', 'syracuse', 'tea', 'tomato']);
+export const THEMES = new Set<ThemeName>([
+    'india',
+    'mindaro',
+    'navy',
+    'pink',
+    'rust',
+    'syracuse',
+    'tea',
+    'tomato'
+]);
+export const DARK_THEMES = new Set<ThemeName>([
+    'india',
+    'navy',
+    'rust'
+]);
+export const LIGHT_THEMES = new Set<ThemeName>([
+    'mindaro',
+    'pink',
+    'syracuse',
+    'tea',
+    'tomato'
+]);
 
 export type ColorScheme = 'light' | 'dark';
 
@@ -11,7 +30,27 @@ export type CommonStyle = 'success' | 'hazard' | 'warning' | 'info' | 'exit' | '
 export type StyleMode = 'c' | 'i';
 export type StyleName = 'none' | PaletteStyle | CommonStyle
 
-export const STYLES = new Set<StyleName>(['none', 'active', 'body', 'content', 'divider', 'exit', 'hazard', 'inactive', 'info', 'main', 'neutral', 'primary', 'primary-compliment', 'secondary', 'secondary-compliment', 'success', 'trinary', 'trinary-compliment', 'warning']);
+export const STYLES = new Set<StyleName>([
+    'active',
+    'body',
+    'content',
+    'divider',
+    'exit',
+    'hazard',
+    'inactive',
+    'info',
+    'main',
+    'neutral',
+    'none',
+    'primary-compliment',
+    'primary',
+    'secondary-compliment',
+    'secondary',
+    'success',
+    'trinary-compliment',
+    'trinary',
+    'warning'
+]);
 
 function getStyleClass(format: StyleFormat, style: StyleName, mode?: StyleMode, mono?: number) {
     if (style === 'none')
@@ -21,13 +60,13 @@ function getStyleClass(format: StyleFormat, style: StyleName, mode?: StyleMode, 
 
     if (mono) {
         if (mono < 0)
-            styleClass += `-d${-mono}`
+            styleClass += `-d${-mono}`;
         else
-            styleClass += `-l${mono}`
+            styleClass += `-l${mono}`;
     }
 
     if (mode)
-        return styleClass + `-${mode}`
+        return styleClass + `-${mode}`;
 
     return styleClass;
 }
@@ -83,6 +122,7 @@ export class Theme {
     private LOCALSTORAGE_THEME_KEY: string;
     private LOCALSTORAGE_COLOR_SCHEME_KEY: string;
 
+    // eslint-disable-next-line class-methods-use-this
     getStyles(theme?: ThemeOptions<ThemeOption>) {
         if (!theme)
             return '';
@@ -93,7 +133,7 @@ export class Theme {
         if (theme.border)
             list.push(borderStyle(theme.border.style, theme.border.mode, theme.border.mono));
         if (theme.color)
-            list.push(colorStyle(theme.color.style, theme.color.mode, theme.color.mono))
+            list.push(colorStyle(theme.color.style, theme.color.mode, theme.color.mono));
 
         if (list.length === 0)
             return '';
@@ -102,11 +142,22 @@ export class Theme {
     }
 
     getBasicStyling(style: StyleName, theme?: ThemeOptions<IThemeOption>) {
-        return this.getStyles({ background: { style, ...theme?.background }, border: { style, mono: 1, ...theme?.border }, ...theme?.color })
+        return this.getStyles({
+            background: {
+                style,
+                ...theme?.background
+            },
+            border: {
+                mono: 1,
+                style,
+                ...theme?.border
+            },
+            ...theme?.color
+        });
     }
 
     private updateTheme(theme: ThemeName) {
-        console.debug('Update theme to:', theme)
+        console.debug('Update theme to:', theme);
 
         document.body.classList.remove(...this.getThemeList());
         document.body.classList.add(theme, THEME_CHANGE_CLASS);
@@ -122,7 +173,7 @@ export class Theme {
     }
 
     private onColorSchemeChange() {
-        console.debug('On color scheme change...')
+        console.debug('On color scheme change...');
 
         let theme = this.getTheme();
         console.debug('Current theme:', theme);
@@ -133,21 +184,21 @@ export class Theme {
         }
 
         if (!theme)
-            throw Error('Failed to get theme on color scheme change')
+            throw Error('Failed to get theme on color scheme change');
 
         const colorScheme = this.getColorScheme();
 
         if (colorScheme === 'dark' && !DARK_THEMES.has(theme)) {
-            theme = Array.from(LIGHT_THEMES)[0];
+            [theme] = Array.from(LIGHT_THEMES);
             console.warn('Using dark color scheme but selected theme is not in list; setting to', theme);
         }
         else if (colorScheme === 'light' && !LIGHT_THEMES.has(theme)) {
-            theme = Array.from(DARK_THEMES)[0]
+            [theme] = Array.from(DARK_THEMES);
             console.warn('Using light color scheme but selected theme is not in list; setting to', theme);
         }
 
         if (!theme)
-            throw new Error('Failed to get theme on color scheme change after selecting defaults')
+            throw new Error('Failed to get theme on color scheme change after selecting defaults');
 
         this.setTheme(theme);
     }
@@ -166,21 +217,21 @@ export class Theme {
             if (colorScheme !== 'dark' && colorScheme !== 'light')
                 window.localStorage.removeItem(this.LOCALSTORAGE_COLOR_SCHEME_KEY);
             else
-                return colorScheme
+                return colorScheme;
         }
 
         if (window.matchMedia(COLOR_SCHEME_DARK).matches)
-            return 'dark'
+            return 'dark';
 
         if (window.matchMedia(COLOR_SCHEME_LIGHT).matches)
-            return 'light'
+            return 'light';
 
         return this.defaultColorScheme || 'dark';
     }
 
     getDefaultTheme(colorScheme?: ColorScheme) {
         if (this.defaultTheme)
-            return this.defaultTheme
+            return this.defaultTheme;
 
         const cs = colorScheme || this.getColorScheme();
 
@@ -193,10 +244,10 @@ export class Theme {
     getTheme() {
         const theme = window.localStorage.getItem(this.LOCALSTORAGE_THEME_KEY);
 
-        console.debug('Get theme; have:', theme)
+        console.debug('Get theme; have:', theme);
 
         if (!theme || !this.themes.has(theme)) {
-            console.warn('No theme or not in supported list; getting default theme...')
+            console.warn('No theme or not in supported list; getting default theme...');
 
             window.localStorage.removeItem(this.LOCALSTORAGE_THEME_KEY);
 
@@ -215,7 +266,7 @@ export class Theme {
             this.updateTheme(theme);
         }
         else {
-            console.warn('Theme is not in supported list; getting current theme')
+            console.warn('Theme is not in supported list; getting current theme');
 
             const currentTheme = this.getTheme();
             if (currentTheme)
@@ -224,10 +275,10 @@ export class Theme {
     }
 
     setColorScheme(colorScheme?: ColorScheme) {
-        if (!colorScheme)
-            window.localStorage.removeItem(this.LOCALSTORAGE_COLOR_SCHEME_KEY);
-        else
+        if (colorScheme)
             window.localStorage.setItem(this.LOCALSTORAGE_COLOR_SCHEME_KEY, colorScheme);
+        else
+            window.localStorage.removeItem(this.LOCALSTORAGE_COLOR_SCHEME_KEY);
 
         this.onColorSchemeChange();
     }
@@ -260,7 +311,7 @@ export class Theme {
         const useAllThemes = allowedThemes === undefined || allowedThemes.size === 0;
 
         if (useAllThemes) {
-            console.debug('Using all themes...')
+            console.debug('Using all themes...');
             THEMES.forEach((t) => this.themes.add(t));
         }
         else {
@@ -268,7 +319,7 @@ export class Theme {
 
             if (defaultTheme)
                 this.themes.add(defaultTheme);
-            allowedThemes.forEach((t) => this.themes.add(t))
+            allowedThemes.forEach((t) => this.themes.add(t));
         }
 
         try {
