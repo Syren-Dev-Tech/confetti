@@ -115,7 +115,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@dead-harbour/scss-rigging@workspace:."
   dependencies:
-    "@dead-harbour/shipshape": "npm:^1.0.5"
+    "@dead-harbour/shipshape": "npm:1.0.6"
     "@stylistic/stylelint-config": "npm:^5.0.0"
     "@stylistic/stylelint-plugin": "npm:^5.3.0"
     "@types/node": "npm:^26.4.1"
@@ -135,18 +135,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@dead-harbour/shipshape@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@dead-harbour/shipshape@npm:1.0.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40dead-harbour%2Fshipshape%2F1.0.5%2F594cad858742681d1326f026120d57918da9ea27"
+"@dead-harbour/shipshape@npm:1.0.6":
+  version: 1.0.6
+  resolution: "@dead-harbour/shipshape@npm:1.0.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40dead-harbour%2Fshipshape%2F1.0.6%2Fd367d9d2a2531432d67c10bbf406b0dec4d58bcc"
   dependencies:
     "@stylistic/stylelint-config": "npm:^5.0.0"
-    "@stylistic/stylelint-plugin": "npm:^5.2.1"
-    oxlint-tsgolint: "npm:^7.0.2001"
-    stylelint: "npm:^17.14.1"
+    "@stylistic/stylelint-plugin": "npm:^5.3.0"
+    stylelint: "npm:^17.15.0"
     stylelint-config-standard: "npm:^40.0.0"
     stylelint-config-standard-scss: "npm:^17.0.0"
     stylelint-scss: "npm:^7.2.0"
-  checksum: 10c0/aaed853da4400e88403e0527567608e858fc7512ac0456219aea6c223084853d4df3f9c01b53d964ff2726529a931b37e1c200a6fa87bfcbad9a01035f432308
+  checksum: 10c0/be1babc6af848b2ed65679366e00cbbdb058396faf241abfeb3bfd926a9e8996a4b8c63a0362da7ff91daea2276c309ca74333781893306b62c4e001e2b48612
   languageName: node
   linkType: hard
 
@@ -982,7 +981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylistic/stylelint-plugin@npm:^5.1.0, @stylistic/stylelint-plugin@npm:^5.2.1, @stylistic/stylelint-plugin@npm:^5.3.0":
+"@stylistic/stylelint-plugin@npm:^5.1.0, @stylistic/stylelint-plugin@npm:^5.3.0":
   version: 5.3.0
   resolution: "@stylistic/stylelint-plugin@npm:5.3.0"
   dependencies:
@@ -2601,7 +2600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^17.14.1, stylelint@npm:^17.15.0":
+"stylelint@npm:^17.15.0":
   version: 17.15.0
   resolution: "stylelint@npm:17.15.0"
   dependencies:
