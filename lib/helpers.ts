@@ -1,20 +1,17 @@
 import type { StyleFormat, StyleMode, StyleName, StyleOption } from './types';
 
+// oxlint-disable-next-line max-params
 function getStyleClass(format: StyleFormat, style: StyleName, mode?: StyleMode, mono?: number) {
-    if (style === 'none')
-        return '';
+    if (style === 'none') return '';
 
     let styleClass = `${format}-${style}`;
 
     if (mono) {
-        if (mono < 0)
-            styleClass += `-d${-mono}`;
-        else
-            styleClass += `-l${mono}`;
+        if (mono < 0) styleClass += `-d${-mono}`;
+        else styleClass += `-l${mono}`;
     }
 
-    if (mode)
-        return styleClass + `-${mode}`;
+    if (mode) return `${styleClass}-${mode}`;
 
     return styleClass;
 }

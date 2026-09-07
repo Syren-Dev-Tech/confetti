@@ -23,11 +23,9 @@ $dark-base: (
   divider: #f7cb94
 );
 $light-palette: map.merge($theme, $light-base);
-$light-palette: map.merge($light-palette, common.$palette);
 $dark-palette: map.merge($theme, $dark-base);
-$dark-palette: map.merge($dark-palette, common.$palette);
 
 @mixin register() {
-  @include registry.register-theme('syracuse-light', $light-palette, 'light', 'syracuse-dark');
-  @include registry.register-theme('syracuse-dark', $dark-palette, 'dark', 'syracuse-light');
+  @include registry.register-theme('syracuse-light', $light-palette);
+  @include registry.register-theme('syracuse-dark', $dark-palette);
 }

@@ -28,6 +28,6 @@ $dark-palette: map.merge($theme, $dark-base);
 $dark-palette: map.merge($dark-palette, common.$palette);
 
 @mixin register() {
-  @include registry.register-theme('navy-light', $light-palette, 'light', 'navy-dark');
-  @include registry.register-theme('navy-dark', $dark-palette, 'dark', 'navy-light');
+  @include registry.register-theme('navy-light', $light-palette);
+  @include registry.register-theme('navy-dark', $dark-palette);
 }

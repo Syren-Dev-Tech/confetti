@@ -20,19 +20,9 @@
         "skipLibCheck": false,
         "strict": true,
         "target": "esnext",
-        "lib": [
-            "dom",
-            "esnext"
-        ],
-        "types": [
-            "node"
-        ]
+        "lib": ["dom", "esnext"],
+        "types": ["node"]
     },
-    "include": [
-        "lib"
-    ],
-    "exclude": [
-        "./**/*.mjs",
-        "./scss/**/*"
-    ]
+    "include": ["lib"],
+    "exclude": ["./**/*.mjs", "./scss/**/*"]
 }

@@ -5,7 +5,7 @@
 [![GitHub Logo](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dead-harbour/shipshape)
 ![GitHub package.json dev/peer/optional dependency version (branch)](https://img.shields.io/github/package-json/dependency-version/dead-harbour/scss-rigging/dev/%40dead-harbour%2Fshipshape/master)
 
-***
+---
 
 Why does this "package" exist?
 
@@ -37,7 +37,7 @@ To include theme definitions, your "root" SCSS file should include something lik
 ... and your `index.html` file, or whatever defines your `body`, should use:
 
 ```html
-<body class="theme">
+<body class="theme"></body>
 ```
 
 Because I wrote this with Vite in mind, configuration of SCSS imports can be done with a simple "merge-in" config `viteConfigAliases()`.
@@ -55,7 +55,7 @@ export default defineConfig({
         }
     }
     // ...
-})
+});
 ```
 
 This takes an optional "overrides" argument that lets you define SCSS import aliases.

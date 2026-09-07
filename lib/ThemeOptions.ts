@@ -1,48 +1,22 @@
 import { backgroundStyle, borderStyle, boxShadowStyle, textShadowStyle, textStyle } from './helpers';
-import { IThemeOptions, StyleOption, ThemeOptionsModifier } from './types';
+import type { StyleName, StyleOption, ThemeOptionsModifier } from './types';
 
-function getOptions(opt: ThemeOptions, ...options: (IThemeOptions | undefined)[]) {
-    if (options.length === 0)
-        return opt;
+class ThemeOptions {
+    private background?: StyleOption;
+    private border?: StyleOption;
+    private text?: StyleOption;
+    private textShadow?: StyleOption;
+    private boxShadow?: StyleOption;
 
-    return options.reduce((acc, option) => ({
-        ...acc,
-        ...option
-    }), opt);
-}
-
-export interface ThemeProps {
-    theme?: ThemeOptions
-}
-
-export class ThemeOptions implements IThemeOptions {
-
-    readonly background?: StyleOption;
-    readonly border?: StyleOption;
-    readonly text?: StyleOption;
-    readonly textShadow?: StyleOption;
-    readonly boxShadow?: StyleOption;
-
-    getClasses(modifier?: ThemeOptionsModifier) {
+    private getClasses(modifier?: ThemeOptionsModifier) {
         const classes: string[] = [];
 
-        if (modifier?.listable === 1)
-            classes.push('li');
-
-        if (this.background)
-            classes.push(backgroundStyle(this.background));
-
-        if (this.border)
-            classes.push(borderStyle(this.border));
-
-        if (this.text)
-            classes.push(textStyle(this.text));
-
-        if (this.textShadow)
-            classes.push(textShadowStyle(this.textShadow));
-
-        if (this.boxShadow)
-            classes.push(boxShadowStyle(this.boxShadow));
+        if (modifier?.listable === 1) classes.push('li');
+        if (this.background) classes.push(backgroundStyle(this.background));
+        if (this.border) classes.push(borderStyle(this.border));
+        if (this.text) classes.push(textStyle(this.text));
+        if (this.textShadow) classes.push(textShadowStyle(this.textShadow));
+        if (this.boxShadow) classes.push(boxShadowStyle(this.boxShadow));
 
         return classes;
     }
@@ -53,28 +27,76 @@ export class ThemeOptions implements IThemeOptions {
         return classes.join(' ');
     }
 
-    merge(...options: (IThemeOptions | undefined)[]) {
-        const option = getOptions(this, ...options);
+    merge(options: ThemeOptions | undefined) {
+        if (!options) return this;
 
-        return new ThemeOptions(option);
+        if (options.background) this.background = options.background;
+        if (options.border) this.border = options.border;
+        if (options.text) this.text = options.text;
+        if (options.textShadow) this.textShadow = options.textShadow;
+        if (options.boxShadow) this.boxShadow = options.boxShadow;
+
+        return this;
     }
 
-    conditional(flag: boolean, a: (IThemeOptions | undefined)[], b: (IThemeOptions | undefined)[]) {
-        if (flag)
-            return this.merge(...a);
+    conditional(flag: boolean, a: ThemeOptions | undefined, b: ThemeOptions | undefined) {
+        if (flag) return this.merge(a);
 
-        return this.merge(...b);
+        return this.merge(b);
     }
 
-    constructor(...options: (IThemeOptions | undefined)[]) {
-        const option = getOptions(this, ...options);
+    withBackground(style: StyleName) {
+        this.background = {
+            ...this.background,
+            style
+        };
 
-        if (option) {
-            this.background = option.background;
-            this.border = option.border;
-            this.text = option.text;
-            this.textShadow = option.textShadow;
-            this.boxShadow = option.boxShadow;
-        }
+        return this;
     }
+
+    withBorder(style: StyleName) {
+        this.border = {
+            ...this.border,
+            style
+        };
+
+        return this;
+    }
+
+    withTextColor(style: StyleName) {
+        this.text = {
+            ...this.text,
+            style
+        };
+
+        return this;
+    }
+
+    withTextShadow(style: StyleName) {
+        this.textShadow = {
+            ...this.textShadow,
+            style
+        };
+
+        return this;
+    }
+
+    withBoxShadow(style: StyleName) {
+        this.boxShadow = {
+            ...this.boxShadow,
+            style
+        };
+
+        return this;
+    }
+}
+
+export { type ThemeOptions };
+
+export function theme() {
+    return new ThemeOptions();
+}
+
+export interface ThemeProps {
+    theme?: ThemeOptions;
 }

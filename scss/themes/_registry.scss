@@ -4,8 +4,6 @@
 
 $theme-map: (
 );
-$theme-mode-map: (
-);
 
 @function repl($str, $from, $to) {
   $index: string.index($str, $from);
@@ -42,7 +40,7 @@ $theme-mode-map: (
   @return $v;
 }
 
-@mixin register-theme($name, $theme, $color-mode, $inverse) {
+@mixin register-theme($name, $theme) {
   @debug ('register theme'$name);
 
   @if map.has-key($theme-map, $name) {
@@ -69,18 +67,13 @@ $theme-mode-map: (
     $theme-map: map.set($theme-map, $name, $merge-theme) !global;
   }
   @else {
-    @debug ('defining new theme', $name, 'with scheme', $color-mode, 'and inverse', $inverse);
+    @debug ('defining new theme', $name);
 
     $theme: repl-recur($theme, (), $theme);
     $theme-map: map.merge($theme-map, (#{$name}: $theme)) !global;
-    $theme-mode-map: map.merge($theme-mode-map, (#{$name}: '#{$color-mode}|#{$inverse}')) !global;
   }
 }
 
 @function themes() {
   @return $theme-map;
-}
-
-@function modes() {
-  @return $theme-mode-map;
 }

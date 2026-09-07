@@ -23,11 +23,9 @@ $dark-base: (
   divider: #3e4a3e
 );
 $light-palette: map.merge($theme, $light-base);
-$light-palette: map.merge($light-palette, common.$palette);
 $dark-palette: map.merge($theme, $dark-base);
-$dark-palette: map.merge($dark-palette, common.$palette);
 
 @mixin register() {
-  @include registry.register-theme('tea-light', $light-palette, 'light', 'tea-dark');
-  @include registry.register-theme('tea-dark', $dark-palette, 'dark', 'tea-light');
+  @include registry.register-theme('tea-light', $light-palette);
+  @include registry.register-theme('tea-dark', $dark-palette);
 }

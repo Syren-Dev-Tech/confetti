@@ -39,3 +39,35 @@ publish: check-published
 		$(MAKE) tag-version; \
 		echo "Tag $(TAG) is ready for release."; \
 	fi
+
+up-deps:
+	@if ! command -v jq >/dev/null 2>&1; then \
+		echo "Error: jq is required but not installed." >&2; \
+		exit 1; \
+	fi
+	@echo "Extracting dependencies from package.json..."
+	@DEPS=$$(jq -r '.dependencies // {} | keys | .[]' package.json); \
+	if [ -z "$$DEPS" ]; then \
+		echo "No dependencies found."; \
+	else \
+		for dep in $$DEPS; do \
+			echo "Upgrading $$dep..."; \
+			yarn up "$$dep"; \
+		done; \
+	fi
+
+up-devdeps:
+	@if ! command -v jq >/dev/null 2>&1; then \
+		echo "Error: jq is required but not installed." >&2; \
+		exit 1; \
+	fi
+	@echo "Extracting dev dependencies from package.json..."
+	@DEPS=$$(jq -r '.devDependencies // {} | keys | .[]' package.json); \
+	if [ -z "$$DEPS" ]; then \
+		echo "No dev dependencies found."; \
+	else \
+		for dep in $$DEPS; do \
+			echo "Upgrading $$dep..."; \
+			yarn up "$$dep"; \
+		done; \
+	fi

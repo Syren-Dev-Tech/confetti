@@ -11,38 +11,36 @@
 @use 'themes/palettes/tea';
 @use 'themes/palettes/tomato';
 
-@mixin use-themes($themes) {
-  @if list.index($themes, 'india') {
-    @include india.register;
-  }
+@mixin use-india() {
+  @include india.register;
+}
 
-  @if list.index($themes, 'mindaro') {
-    @include mindaro.register;
-  }
+@mixin use-mindaro() {
+  @include mindaro.register;
+}
 
-  @if list.index($themes, 'navy') {
-    @include navy.register;
-  }
+@mixin use-navy() {
+  @include navy.register;
+}
 
-  @if list.index($themes, 'pink') {
-    @include pink.register;
-  }
+@mixin use-pink() {
+  @include pink.register;
+}
 
-  @if list.index($themes, 'rust') {
-    @include rust.register;
-  }
+@mixin use-rust() {
+  @include rust.register;
+}
 
-  @if list.index($themes, 'syracuse') {
-    @include syracuse.register;
-  }
+@mixin use-syracuse() {
+  @include syracuse.register;
+}
 
-  @if list.index($themes, 'tea-light') or list.index($themes, 'tea-dark') {
-    @include tea.register;
-  }
+@mixin use-tea() {
+  @include tea.register;
+}
 
-  @if list.index($themes, 'tomato') {
-    @include tomato.register;
-  }
+@include use-tomato() {
+  @include tomato.register;
 }
 
 @mixin apply() {
